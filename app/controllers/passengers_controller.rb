@@ -20,7 +20,11 @@ class PassengersController < ApplicationController
     private
 
     def find_passenger
-        Passenger.find(params[:age])
+        Passenger.find(params[:id])
+    end
+
+    def  passenger_params
+        params.permit(:departure, :destination, :first_name, :middle_name, :last_name, :nationality, :gender, :title, :age, :departure_date, :return_date)
     end
 
 end
