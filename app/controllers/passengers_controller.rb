@@ -10,7 +10,6 @@ class PassengersController < ApplicationController
         render json: passenger
         rescue ActiveRecord::RecordNotFound
         render json: { error: "passenger not found"},  status: :not_found
-        end
     end
 
     def create
