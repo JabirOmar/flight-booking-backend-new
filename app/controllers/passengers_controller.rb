@@ -6,17 +6,22 @@ class PassengersController < ApplicationController
     end
 
     def show
-        passenger = Passenger.find(params[:age])
-        if passenger
-            render json: passenger
-        else
-            render json: { error: "passenger not found"}, status: 404
+        passenger = find_passenger
+        render json: passenger
+        rescue ActiveRecord::RecordNotFound
+        render json: { error: "passenger not found"},  status: :not_found
         end
     end
 
     def create
         passenger = Passenger.create(passenger_params)
         render json: passenger
+    end
+
+    private
+
+    def find_passenger
+        Passenger.find(params[:id])
     end
 
 end
