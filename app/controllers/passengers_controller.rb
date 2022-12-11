@@ -6,7 +6,7 @@ class PassengersController < ApplicationController
     end
 
     def show
-        passenger = Passenger.find_by(destination:params[:destination])
+        passenger = Passenger.find(params[:id])
         if passenger
             render json: passenger
         else
