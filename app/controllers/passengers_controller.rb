@@ -20,7 +20,7 @@ class PassengersController < ApplicationController
     private
 
     def find_passenger
-        Passenger.find(params[:id])
+        Passenger.find(params[:age])
     end
 
 end
